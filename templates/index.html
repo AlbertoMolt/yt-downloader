@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video downloader</title>
+    <link rel="stylesheet" href="/static/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+</head>
+<body class="bg-[#141b33] text-white">
+    <h1 class="text-center mb-6 mt-5 text-2xl">Video downloader</h1>
+    <div class="grid justify-items-center">
+        <div>
+            <input id="url-input" class="border px-2 py-1 w-96 mr-1 rounded text-black" type="text" placeholder="https://www.youtube.com/watch?v=...">
+            <button id="submit-btn" class="border bg-blue-500 text-white px-4 py-1 rounded">Submit</button>
+        </div>
+
+        <span id="loader" class="hidden my-10"></span>
+
+        <div id="download-interface" class="hidden opacity-0 translate-y-4 transition-all duration-500 ease-out max-w-lg">            
+            <div id="video-section">
+                <div id="video-container" class="pt-4">
+                    <img id="thumbnail-video" class="w-full border rounded-lg" alt="video thumbnail">
+                    <div id="info-video" class="pt-2 text-center">
+                        <p id="title-video" class="overflow-auto"></p>
+                    </div>
+                </div>
+                <div id="formats-container" class="grid grid-cols-2 gap-5 pt-3">
+                    <div id="video-format" class="border rounded-lg overflow-hidden">
+                        <label for="video-formats" class="ml-2">Video formats:</label>
+                        <select class="text-black bg-blue-500 w-full text-white pl-2 py-1 pr-8 cursor-pointer truncate" name="video-formats" id="video-formats-select" title="video-formats">
+                            <option value="none">❌ None</option>
+                        </select>
+                    </div>
+                    <div id="audio-format" class="border rounded-lg overflow-hidden">
+                        <label for="audio-formats" class="ml-2">Audio formats:</label>
+                        <select class="text-black bg-blue-500 w-full text-white px-2 py-1 pr-8 cursor-pointer truncate" name="audio-formats" id="audio-formats-select" title="audio-formats">
+                            <option value="none">❌ None</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="download-section" class="flex justify-center">
+                <span id="download-btn" class="cursor-pointer inline-block border h-9 min-w-[120px] bg-green-500 text-white px-4 py-1 rounded my-5 text-center">Download</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+<script src="/static/script.js"></script>
+</html>
