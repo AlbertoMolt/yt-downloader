@@ -3,51 +3,87 @@ import os
 
 downloads_path = 'downloads'
 
-with open('config.json', 'r') as file:
-    config = json.load(file)
-
-mb_max_storage_size = config['mb_max_storage_size']
 files_dict = {}
-total_size_mb = 0
 
-for filename in os.listdir(downloads_path):
-    file_path = os.path.join(downloads_path, filename)
-    if os.path.isfile(file_path):
-        size_mb = os.path.getsize(file_path) / (1024 * 1024)
-        total_size_mb += size_mb
-        mod_time = os.path.getmtime(file_path)
-        
-        files_dict[filename] = {
-            "path": file_path,
-            "size_mb": size_mb,
-            "mod_time": mod_time
-        }
-        
-        
+def get_max_storage():
+    with open('config.json', 'r') as file:
+        config = json.load(file)
+
+    return config['mb_max_storage_size']
+
+def get_files_info():
+    total_size_mb = 0
+    for filename in os.listdir(downloads_path):
+        file_path = os.path.join(downloads_path, filename)
+        if os.path.isfile(file_path):
+            size_mb = os.path.getsize(file_path) / (1024 * 1024)
+            total_size_mb += size_mb
+            mod_time = os.path.getmtime(file_path)
+            
+            files_dict[filename] = {
+                "path": file_path,
+                "size_mb": size_mb,
+                "mod_time": mod_time
+            }
+            
+    return files_dict
+
+def get_total_size():
+    total_size_mb = 0
+    for filename in os.listdir(downloads_path):
+        file_path = os.path.join(downloads_path, filename)
+        if os.path.isfile(file_path):
+            size_mb = os.path.getsize(file_path) / (1024 * 1024)
+            total_size_mb += size_mb
+            
+    return total_size_mb
+
 def delete_old_files():
+    files_dict  = get_files_info()
+    total_size_mb = get_total_size()
+    
     sorted_files = sorted(
         files_dict.items(),
         key=lambda x: x[1]["mod_time"]
     )
     
-    total = total_size_mb
     removed_files = 0
     
     for name, info in sorted_files:
-        if total <= mb_max_storage_size:
+        if total_size_mb <= get_max_storage():
             break
         
         removed_files += 1
         os.remove(info["path"])
-        total -= info["size_mb"]
+        total_size_mb -= info["size_mb"]
         del files_dict[name]
         
     print(f"{removed_files} file(s) has been removed.")
 
-print(f"{total_size_mb:.2f} MB / {mb_max_storage_size} MB")
-
-if total_size_mb > mb_max_storage_size:
-    print("⚠️ Max storage space exceeded")
-    delete_old_files()
-else:
-    print("✅ All good")
+def make_space(file_size):
+    max_storage = get_max_storage()
+    total_size_mb = get_total_size()
+    
+    new_size = total_size_mb + (file_size / (1024 * 1024))
+    
+    print("Storage occupied:")
+    print(f"    {new_size:.2f} MB / {max_storage} MB")
+    
+    if new_size > max_storage:
+        print("⚠️ Max storage space exceeded")
+        delete_old_files()
+    else:
+        print("✅ All good")
+        
+def check_space():
+    max_storage = get_max_storage()
+    total_size_mb = get_total_size()
+    
+    print("Storage occupied:")
+    print(f"    {total_size_mb:.2f} MB / {max_storage} MB")
+    
+    if total_size_mb > max_storage:
+        print("⚠️ Max storage space exceeded")
+        delete_old_files()
+    else:
+        print("✅ All good")

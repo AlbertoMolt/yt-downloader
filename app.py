@@ -1,3 +1,5 @@
+import file_cleanup
+
 import os
 import yt_dlp
 from flask import Flask, render_template, request, jsonify, send_file, send_from_directory
@@ -103,8 +105,11 @@ def download():
             
             filename = ydl.prepare_filename(info)
             filename_clean = os.path.basename(filename)
-
-            ydl.download([url])
+            
+            print(info.get('filesize'))
+            file_cleanup.make_space(info.get('filesize'))
+            
+            #ydl.download([url])
                         
         return jsonify({
             "success": True,
@@ -140,4 +145,5 @@ def home():
 
 if __name__ == "__main__":
     print("✅ Started")
+    file_cleanup.check_space()
     app.run(host="0.0.0.0", debug=True)
