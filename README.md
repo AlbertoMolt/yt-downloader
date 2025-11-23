@@ -10,7 +10,6 @@ YouTube, Vimeo, Twitter/X, Instagram, TikTok, Twitch, Facebook, Reddit, Dailymot
 - 🎬 Select video and audio quality separately
 - 🎨 Modern UI with smooth animations
 - ⚡ Fast downloads powered by yt-dlp
-- 🔔 Real-time notifications
 
 ## Tech Stack
 - Frontend: HTML, TailwindCSS, JavaScript, Notyf
@@ -19,7 +18,7 @@ YouTube, Vimeo, Twitter/X, Instagram, TikTok, Twitch, Facebook, Reddit, Dailymot
 
 ## Installation
 ```bash
-pip install flask yt-dlp werkzeug
+pip install -r requirements.txt
 python app.py
 ```
 

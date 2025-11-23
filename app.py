@@ -2,15 +2,26 @@ import file_cleanup
 
 import os
 import yt_dlp
-from flask import Flask, render_template, request, jsonify, send_file, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_file
+from flask_socketio import SocketIO
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-def my_hook(d):
+socketio = SocketIO(app)
+
+def progress_hook(d):
     if d['status'] == 'downloading':
-        porcentaje = d['_percent_str']
-        print("Progreso:", porcentaje)
+        int_percentage = None
+        
+        if 'fraction_M' in d and d['fraction_M'] is not None:
+            int_percentage = int(d['fraction_M'] * 100)
+                    
+        if int_percentage is not None:
+            print(f"Descargando: {int_percentage}%")
+            
+            socketio.emit('progress', {'percentage': int_percentage}, namespace='/download')
+        
     elif d['status'] == 'finished':
         print("Completado:", d['filename'])
 
@@ -98,6 +109,8 @@ def download():
             'format': format,
             'quiet': True,
             'outtmpl': f'downloads/{filename_template}',
+            'progress_hooks': [progress_hook],
+            'noplaylist': True
         }
         
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -109,7 +122,7 @@ def download():
             print(info.get('filesize'))
             file_cleanup.make_space(info.get('filesize'))
             
-            #ydl.download([url])
+            ydl.download([url])
                         
         return jsonify({
             "success": True,
