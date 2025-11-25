@@ -1,7 +1,8 @@
+from config import downloads_path
+from utils import check_or_create_downloads_path
+
 import json
 import os
-
-downloads_path = 'downloads'
 
 files_dict = {}
 
@@ -13,6 +14,8 @@ def get_max_storage():
 
 def get_files_info():
     total_size_mb = 0
+    check_or_create_downloads_path()
+    
     for filename in os.listdir(downloads_path):
         file_path = os.path.join(downloads_path, filename)
         if os.path.isfile(file_path):
@@ -30,6 +33,8 @@ def get_files_info():
 
 def get_total_size():
     total_size_mb = 0
+    check_or_create_downloads_path()
+    
     for filename in os.listdir(downloads_path):
         file_path = os.path.join(downloads_path, filename)
         if os.path.isfile(file_path):
@@ -58,7 +63,7 @@ def delete_old_files():
         total_size_mb -= info["size_mb"]
         del files_dict[name]
         
-    print(f"{removed_files} file(s) has been removed.")
+    print(f"{removed_files} file{'s' if removed_files != 1 else ''} has been removed.")
 
 def make_space(file_size):
     max_storage = get_max_storage()
@@ -66,7 +71,7 @@ def make_space(file_size):
     
     new_size = total_size_mb + (file_size / (1024 * 1024))
     
-    print("Storage occupied:")
+    print("Storage occupied + new file:")
     print(f"    {new_size:.2f} MB / {max_storage} MB")
     
     if new_size > max_storage:

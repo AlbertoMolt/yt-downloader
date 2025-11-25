@@ -1,5 +1,5 @@
 {
     "port": 6776,
     "mb_max_storage_size": 512.0,
-    "yt-cookies": "cookies.txt"
+    "yt_cookies_path": ""
 }

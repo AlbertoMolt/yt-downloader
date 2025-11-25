@@ -14,6 +14,16 @@ const audioFormatsSelect = document.getElementById('audio-formats-select');
 
 const notyf = new Notyf();
 
+const socket = io('/download');
+
+socket.on('progress', function(data) {
+    const percentage = data.percentage;
+    console.log('Progreso:', percentage + '%');
+    
+    // Actualizar una barra de progreso, por ejemplo:
+    downloadBtn.innerHTML = percentage + '%';
+});
+
 async function showInfo(url) {
     const [title, extractor, thumbnail, video_formats, audio_formats] = await getInfo(url);
 
@@ -141,7 +151,7 @@ downloadBtn.addEventListener('click', () => {
     if (videoFormatsSelect.value != "none" || audioFormatsSelect.value != "none") {
         startDownload(urlInput.value);
         downloadBtn.classList.add('downloading', 'w-full');
-        downloadBtn.innerHTML = '';
+        //downloadBtn.innerHTML = '';
     } else {
         notyf.error('At least one format must not be none.');
     }
