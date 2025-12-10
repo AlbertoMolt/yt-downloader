@@ -1,32 +1,26 @@
-# --- Python Bytecode (Basura generada al ejecutar) ---
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# --- Entornos Virtuales (Nunca se suben) ---
 venv/
 .venv/
 env/
 .env/
 
-# --- Distribución y Builds (Si creas paquetes) ---
 build/
 dist/
 *.egg-info/
 
-# --- Variables de Entorno / Secretos (SEGURIDAD) ---
 .env
 .env.local
 
-# --- IDEs y Editores (Configuraciones personales) ---
 .vscode/
 .idea/
 *.swp
 
-# --- Archivos del Sistema (Basura de Windows/Mac) ---
 .DS_Store
 Thumbs.db
 
-# --- EXTRA ---
 /downloads
+app.log
