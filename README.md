@@ -22,7 +22,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open http://localhost:5000
+Open http://localhost:6776
 
 ## Usage
 1. Paste any video URL from supported platforms
@@ -30,4 +30,5 @@ Open http://localhost:5000
 3. Download!
 
 ## Note
+Please note that this project is being developed by someone with limited skill; please be patient.
 Respect copyright and terms of service of each platform.
