@@ -28,7 +28,7 @@ File config.json with this structure:
 {
     "port": 6776,
     "mb_max_storage_size": 512.0,
-    "yt_cookies_path": "www.youtube.com_cookies.txt"
+    "yt_cookies_path": "cookies.txt"
 }
 ```
 ### Port
