@@ -33,7 +33,7 @@ An easy way to get the cookies is by using the Chrome extension "Get cookies.txt
 
 3. Open the extension and click in `Export`.
 
-4. Save the cookies file into `docker-compose.yml` same folder.
+4. Save the cookies file into a folder.
 
 ```bash
 volumens:
