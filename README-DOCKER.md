@@ -37,7 +37,7 @@ An easy way to get the cookies is by using the Chrome extension "Get cookies.txt
 
 ```bash
 volumens:
-    - ./youtube-cookies.txt:/app/cookies.txt
+    - ./cookies/cookies.txt:/app/cookies.txt
 environment:
     - COOKIES_FILE=/app/cookies.txt
 ```
@@ -61,14 +61,14 @@ services:
 version: '3.8'
 services:
   yt-downloader:
-    image: albertomolt/yt-downloader:latest
+    image: albertomoltrasio/yt-downloader:latest
     container_name: my-video-downloader
     ports:
       - "6776:6776"
     volumes:
       - ./downloads:/app/downloads
       - ./logs:/app/logs
-      - .cookies.txt:/app/cookies.txt
+      - ./cookies/cookies.txt:/app/cookies.txt
     environment:
       - PORT=6776
       - MAX_STORAGE_MB=2048.0
