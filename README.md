@@ -12,6 +12,9 @@ YouTube, Vimeo, Twitter/X, Instagram, TikTok, Twitch, Facebook, Reddit, Dailymot
 - ⚡ Fast downloads powered by yt-dlp
 
 ## Installation
+### 🐋 Docker
+For install yt-downloader in docker go [here](README-DOCKER.md)
+### 🐍 Native installation
 ```bash
 pip install -r requirements.txt
 python app.py
