@@ -36,7 +36,7 @@ An easy way to get the cookies is by using the Chrome extension "Get cookies.txt
 4. Save the cookies file into a folder.
 
 ```bash
-volumens:
+volumes:
     - ./cookies/cookies.txt:/app/cookies.txt
 environment:
     - COOKIES_FILE=/app/cookies.txt
