@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: albertomolt/yt-downloader
+  IMAGE_NAME: albertomoltrasio/yt-downloader
 
 jobs:
   build:
