@@ -19,7 +19,7 @@ python app.py
 
 ## Configuration
 File config.json with this structure:
-```bash
+```json
 {
     "port": 6776,
     "mb_max_storage_size": 512.0,
