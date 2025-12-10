@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  yt-downloader:
+    image: albertomolt/yt-downloader:latest
+    container_name: yt-downloader
+    ports:
+      # Cambiar el puerto del host aquí (formato HOST:CONTAINER)
+      - "6776:6776"
+    volumes:
+      # Carpeta donde se guardarán las descargas
+      - ./downloads:/app/downloads
+      # Carpeta para logs
+      - ./logs:/app/logs
+      # Si tienes cookies de YouTube, descomenta y ajusta la ruta
+      # - ./www.youtube.com_cookies.txt:/app/cookies.txt
+    environment:
+      # Puerto interno del contenedor (debe coincidir con el puerto CONTAINER de arriba)
+      - PORT=6776
+      # Tamaño máximo de almacenamiento en MB antes de limpiar
+      - MAX_STORAGE_MB=512.0
+      # Ruta al archivo de cookies dentro del contenedor (si lo usas)
+      # - COOKIES_FILE=/app/cookies.txt
+    restart: unless-stopped
+
+  # ============================================
+  # EJEMPLO DE CONFIGURACIÓN PERSONALIZADA
+  # ============================================
+  # Descomenta y edita para usar configuración diferente:
+  #
+  # yt-downloader:
+  #   image: albertomolt/yt-downloader:latest
+  #   container_name: yt-downloader
+  #   ports:
+  #     - "8080:8080"  # Cambiar puerto del host a 8080
+  #   volumes:
+  #     - ./mis-descargas:/app/downloads
+  #     - ./mis-logs:/app/logs
+  #     - ./mi-archivo-cookies.txt:/app/cookies.txt
+  #   environment:
+  #     - PORT=8080
+  #     - MAX_STORAGE_MB=1024.0
+  #     - COOKIES_FILE=/app/cookies.txt
+  #   restart: unless-stopped

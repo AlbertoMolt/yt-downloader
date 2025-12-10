@@ -23,4 +23,5 @@ dist/
 Thumbs.db
 
 /downloads
-app.log
+*.log
+*.txt
