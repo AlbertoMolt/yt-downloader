@@ -32,7 +32,7 @@ File config.json with this structure:
 }
 ```
 ### Port
-Here you define which port on yout server you want to use, by default is setted to 6776.
+Here you define which port on you server you want to use, by default is set to 6776.
 ### Max storage size
 Here you define how much content "cache" space you want to store before it is deleted if it is exceeded.
 ### YouTube cookies path
