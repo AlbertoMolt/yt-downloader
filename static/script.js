@@ -93,32 +93,8 @@ async function getInfo(url) {
 }
 
 async function startDownload(url) {
-    try {
-        const response = await fetch('/api/startDownload', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                url: url,
-                video_format_id: videoFormatsSelect.value,
-                audio_format_id: audioFormatsSelect.value
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            notyf.success('Download started!');
-            downloadVideo(data.filename);
-        } else {
-            throw new Error(data.error);
-        }
-    } catch (error) {
-        downloadBtn.classList.remove('downloading', 'w-full');
-        downloadBtn.classList.add('min-w-[120px]');
-        downloadBtn.innerHTML = 'Download';
-        
-        notyf.error('Download failed: ' + error.message);
-    }
+    notyf.error('This is a demo version. Download is disabled.');
+    return;
 }
 
 function downloadVideo(filename) {
@@ -150,8 +126,6 @@ submitBtn.addEventListener('click', () => {
 downloadBtn.addEventListener('click', () => {
     if (videoFormatsSelect.value != "none" || audioFormatsSelect.value != "none") {
         startDownload(urlInput.value);
-        downloadBtn.classList.add('downloading', 'w-full');
-        //downloadBtn.innerHTML = '';
     } else {
         notyf.error('At least one format must not be none.');
     }
