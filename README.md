@@ -49,6 +49,6 @@ An easy way to get the cookies is by using the Chrome extension "Get cookies.txt
 3. Download!
 
 ## Note
-⚠️ Please note that this project is being developed by someone with limited skill; please be patient.
+⚠️ Project under active development. Suggestions and contributions are welcome.
 
 Respect copyright and terms of service of each platform.
