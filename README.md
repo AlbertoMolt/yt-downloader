@@ -1,4 +1,4 @@
-# Universal Video Downloader
+# Self-Hosted Universal Video Downloader
 
 Download videos from 1000+ platforms in different formats and qualities.
 
