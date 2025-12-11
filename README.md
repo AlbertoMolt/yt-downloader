@@ -4,7 +4,7 @@ Download videos from 1000+ platforms in different formats and qualities.
 
 **[Live Demo](https://yt-downloader-rhl7.onrender.com/)**
 
-*(YouTube functionality disabled in this preview.)*
+*(YouTube functionality and download disabled in this preview.)*
 
 ## Supported Platforms
 YouTube, Vimeo, Twitter/X, Instagram, TikTok, Twitch, Facebook, Reddit, Dailymotion, and [1000+ more sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
