@@ -2,7 +2,7 @@
 
 Download videos from 1000+ platforms in different formats and qualities.
 
-**[Live Demo](https://yt-downloader-rhl7.onrender.com/)**
+**🔗 [Live Demo](https://yt-downloader-rhl7.onrender.com/)**
 
 *(YouTube functionality and download disabled in this preview.)*
 
