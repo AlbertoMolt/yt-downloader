@@ -24,7 +24,6 @@ ENV PORT=6776 \
 
 EXPOSE ${PORT}
 
-# Script de entrada para generar config.json dinámicamente
 RUN echo '#!/bin/sh\n\
 import json\n\
 import os\n\
@@ -38,7 +37,7 @@ config = {\n\
 with open("/app/config.json", "w") as f:\n\
     json.dump(config, f, indent=4)\n\
 \n\
-print("✅ Config generated:")\n\
+print("Config generated:")\n\
 print(json.dumps(config, indent=2))\n\
 ' > /app/generate_config.py
 
