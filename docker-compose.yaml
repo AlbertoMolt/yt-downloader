@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   yt-downloader:
-    image: albertomolt/yt-downloader:latest
+    image: albertomoltrasio/yt-downloader:latest
     container_name: yt-downloader
     ports:
       # Cambiar el puerto del host aquí (formato HOST:CONTAINER)
